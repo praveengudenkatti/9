@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRAVEENXBMI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --dark-core: #040509;
+            --panel-hex: #090b12;
+            --text-neon: #ffffff;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--dark-core);
+            color: var(--text-neon);
+            font-family: 'Share Tech Mono', monospace;
+            padding: 25px 15px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .main-terminal-box {
+            width: 100%;
+            max-width: 800px;
+            background: var(--panel-hex);
+            border: 1px solid #1a1f36;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-bottom: 35px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+        }
+        h1.terminal-header {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            font-size: 26px;
+            letter-spacing: 2px;
+            color: #fff;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            background: linear-gradient(90deg, #fff, #00ff66, #00e5ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .terminal-desc {
+            color: #7284a1;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        .matrix-grid {
+            width: 100%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+            margin-bottom: 50px;
+        }
+        .cyber-item-card {
+            background: #0d101b;
+            border: 1px solid #1f253f;
+            border-bottom: 3px solid var(--glow-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        .cyber-item-card:hover {
+            transform: translateY(-5px);
+            background: #121727;
+            border-color: var(--glow-color);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5), 0 0 12px var(--glow-color);
+        }
+        .item-meta {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .item-title-text {
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .pulse-indicator {
+            width: 9px;
+            height: 9px;
+            background-color: var(--glow-color);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--glow-color);
+            animation: pulseGrid 1.5s infinite;
+        }
+        @keyframes pulseGrid {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; }
+            100% { opacity: 0.4; }
+        }
+        .action-tag {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--glow-color);
+            letter-spacing: 1px;
+        }
+        footer {
+            margin-top: auto;
+            text-align: center;
+            width: 100%;
+            max-width: 800px;
+            padding: 25px;
+            border-top: 1px dashed #1a1f36;
+            font-size: 12px;
+            color: #53627c;
+        }
+        .anchor-nodes {
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+        .anchor-nodes a {
+            color: #00e5ff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 13px;
+        }
+        .anchor-nodes a:hover { text-shadow: 0 0 8px #00e5ff; }
+
+        .splash-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(3, 4, 7, 0.96);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 99999;
+        }
+        .splash-box {
+            background: #090b12;
+            border: 2px dashed #00ff66;
+            border-radius: 12px;
+            padding: 35px;
+            max-width: 450px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 0 35px rgba(0, 255, 102, 0.2);
+        }
+        .splash-title {
+            font-family: 'Orbitron', sans-serif;
+            color: #00ff66;
+            font-size: 18px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+        .splash-btn {
+            background: #00ff66;
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            border: none;
+            padding: 12px 30px;
+            margin-top: 25px;
+            border-radius: 6px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.2s;
+        }
+        .splash-btn:hover { box-shadow: 0 0 15px #00ff66; transform: scale(1.02); }
+    </style>
+</head>
+<body>
+
+    
+    <div class="splash-overlay" id="terminalPopup">
+        <div class="splash-box">
+            <div class="splash-title"><i class="fa-solid fa-shield-halved"></i> SYSTEM NOTICE</div>
+            <p style="color:#d1dbe5; font-size:14px; line-height:1.5;">Hi </p>
+            <button class="splash-btn" onclick="document.getElementById('terminalPopup').remove()">INITIALIZE INTERFACE</button>
+        </div>
+    </div>
+
+    <div class="main-terminal-box">
+        <h1 class="terminal-header">PRAVEENXBMI</h1>
+        <p class="terminal-desc">Matrix Dashboard Protocol Active.</p>
+    </div>
+
+    <div class="matrix-grid">
+        
+        <a href="https://r3-tools.vercel.app/" target="_blank" class="cyber-item-card" style="--glow-color: #00ff66">
+            <div class="item-meta">
+                <span class="pulse-indicator"></span>
+                <span class="item-title-text">HACKER</span>
+            </div>
+            <div class="action-tag"><i class="fa-solid fa-circle-chevron-right"></i> EXECUTE</div>
+        </a>
+    </div>
+
+    <footer>
+        <div class="anchor-nodes">
+            <a href="https://wa.me/84898756831" target="_blank"><i class="fa-brands fa-whatsapp"></i> CONNECT CHANNEL</a>
+            
+        </div>
+        <div>Praveenbmi404</div>
+    </footer>
+
+</body>
+</html>
